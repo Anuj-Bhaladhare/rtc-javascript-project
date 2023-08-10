@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .wrapper{
+            margin: auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: baseline;
+            height: 100vh;
+            width: 100vw;
+            background-color: #000000;
+        }
+        .button-all{
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+    
+    </style>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div>
+            <img class="bulb" src="./image/bulb-off.gif"/>
+        </div>
+        <div class="button-all">
+            <button class="bulb-off">Bulb OF</button>
+            <button class="bulb-on">Bulb ON</button>
+        </div>
+    </div>
+    <script>
+        const bulbHandaler = document.querySelector(".bulb");
+        const offBulb = document.querySelector(".bulb-off");
+        const onBulb = document.querySelector(".bulb-on");
+
+        onBulb.addEventListener("click", () => {
+            bulbHandaler.src = "./image/bulb-on.gif";
+        });
+
+        offBulb.addEventListener("click", () => {
+            bulbHandaler.src = "./image/bulb-off.gif";
+        });
+
+    </script>
 </body>
 </html>
