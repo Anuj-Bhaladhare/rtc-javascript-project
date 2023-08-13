@@ -1,52 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .wrapper{
-            margin: auto;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: baseline;
-            height: 100vh;
-            width: 100vw;
-            background-color: #000000;
-        }
-        .button-all{
-            display: flex;
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-    
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .bulb-box {
+      display: flex;
+      height: 100vh;
+      width: 100vw; 
+      margin: auto;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .dark {
+      background: #0e0e0e;
+    }
+
+    button {
+      margin: 0.5rem; 
+      padding: 0.5rem;
+      font-weight: bold;
+    }
+
+    .theme-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div>
-            <img class="bulb" src="./image/bulb-off.gif"/>
-        </div>
-        <div class="button-all">
-            <button class="bulb-off">Bulb OF</button>
-            <button class="bulb-on">Bulb ON</button>
-        </div>
+  <div class="wrapper">
+    <div class="theme-box"> 
+      <button>Dark</button>
+      <button>Light</button>
     </div>
-    <script>
-        const bulbHandaler = document.querySelector(".bulb");
-        const offBulb = document.querySelector(".bulb-off");
-        const onBulb = document.querySelector(".bulb-on");
 
-        onBulb.addEventListener("click", () => {
-            bulbHandaler.src = "./image/bulb-on.gif";
-        });
+    <div class="bulb-box">
+      <div>
+        <img class="bulb" src="./image/bulb-off.gif" alt="Bulb">
+      </div>
+      <div class="button-all">
+        <button class="bulb-off">Bulb Off</button>
+        <button class="bulb-on">Bulb On</button>
+      </div>
+    </div>
+  </div>
+  <script>
 
-        offBulb.addEventListener("click", () => {
-            bulbHandaler.src = "./image/bulb-off.gif";
-        });
+    const wrapper = document.querySelector(".wrapper"); 
+    const allButtons = document.querySelectorAll("button");
+    const bulbHandler = document.querySelector(".bulb");
 
-    </script>
+    allButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+
+        if (event.target.innerHTML === "Dark") {
+            wrapper.classList.add("dark");
+        } 
+        else if (event.target.innerHTML === "Bulb On") {
+            bulbHandler.src = "./image/bulb-on.gif";
+        } 
+        else if (event.target.innerHTML === "Bulb Off") {
+            bulbHandler.src = "./image/bulb-off.gif";
+        } 
+        else {
+            wrapper.classList.remove("dark");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
